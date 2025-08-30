@@ -15,7 +15,12 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
-add_executable(factorial_test tests/factorial_test.cpp src/factorial.cpp)
-add_executable(main main.cpp src/factorial.cpp)
+# Driver program that emits CSV timings
+add_executable(main
+  main.cpp
+  src/power.cpp
+)
 
-target_link_libraries(factorial_test PRIVATE Catch2::Catch2WithMain)
+# Tests
+add_executable(power_test tests/power_test.cpp src/power.cpp)
+target_link_libraries(power_test PRIVATE Catch2::Catch2WithMain)
